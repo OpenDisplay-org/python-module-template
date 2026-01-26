@@ -1,0 +1,50 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write  # For PyPI trusted publishing
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          release-type: python
+          package-name: {{cookiecutter.project_slug}}
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+
+      # The following steps only run if a release was created
+      - name: Checkout code
+        if: {% raw %}${{ steps.release.outputs.release_created }}{% endraw %}
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: {% raw %}${{ steps.release.outputs.release_created }}{% endraw %}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{cookiecutter.python_version}}"
+
+      - name: Install uv
+        if: {% raw %}${{ steps.release.outputs.release_created }}{% endraw %}
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        if: {% raw %}${{ steps.release.outputs.release_created }}{% endraw %}
+        run: uv sync
+
+      - name: Build package
+        if: {% raw %}${{ steps.release.outputs.release_created }}{% endraw %}
+        run: uv build
+
+      - name: Publish to PyPI
+        if: {% raw %}${{ steps.release.outputs.release_created }}{% endraw %}
+        uses: pypa/gh-action-pypi-publish@release/v1

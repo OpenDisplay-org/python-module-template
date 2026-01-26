@@ -1,0 +1,10 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "python",
+      "package-name": "{{cookiecutter.project_slug}}",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+    }
+  }
+}
