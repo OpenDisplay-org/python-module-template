@@ -15,11 +15,8 @@ A cookiecutter template for creating Python packages.
 ## Quick Start
 
 ```bash
-# Install cookiecutter
-pip install cookiecutter
-
 # Generate new project
-cookiecutter gh:OpenDisplay-org/python-module-template
+uvx cookiecutter gh:OpenDisplay-org/python-module-template
 
 # Follow interactive prompts, then:
 cd your-project-name
