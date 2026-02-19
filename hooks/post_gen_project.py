@@ -4,9 +4,9 @@ import os
 import urllib.request
 
 LICENSE_URLS = {
-    "Apache-2.0": "https://www.apache.org/licenses/LICENSE-2.0.txt",
-    "MIT": "https://mit-license.org/license.txt",
-    "GPL-3.0": "https://www.gnu.org/licenses/gpl-3.0.txt",
+    "Apache-2.0": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/Apache-2.0.txt",
+    "MIT": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt",
+    "GPL-3.0": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/GPL-3.0-only.txt",
 }
 
 LICENSE_COPYRIGHT_SUFFIX = {
@@ -18,7 +18,7 @@ LICENSE_COPYRIGHT_SUFFIX = {
 LICENSE_REPLACEMENTS = {
     "MIT": {
         "[year]": "{{cookiecutter.__year}}",
-        "[fullname]": "OpenDisplay.org",
+        "[copyright holders]": "OpenDisplay.org",
     },
 }
 
