@@ -7,5 +7,6 @@
   "author_email": "admin@g4bri3l.de",
   "version": "0.1.0",
   "python_version": "3.11",
+  "license": ["Apache-2.0", "MIT", "GPL-3.0"],
   "__year": "{% now 'utc', '%Y' %}"
 }

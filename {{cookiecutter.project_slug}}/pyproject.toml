@@ -7,7 +7,7 @@ name = "{{cookiecutter.project_slug}}"
 version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.project_short_description}}"
 readme = "README.md"
-license = "MIT"
+license = "{{cookiecutter.license}}"
 requires-python = ">={{cookiecutter.python_version}}"
 authors = [
     {name = "{{cookiecutter.author_name}}", email = "{{cookiecutter.author_email}}"}
@@ -17,7 +17,7 @@ keywords = []  # TODO: Add relevant keywords
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "{{ {'Apache-2.0': 'License :: OSI Approved :: Apache Software License', 'MIT': 'License :: OSI Approved :: MIT License', 'GPL-3.0': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'}[cookiecutter.license] }}",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: {{cookiecutter.python_version}}",
     "Topic :: Software Development :: Libraries :: Python Modules",
