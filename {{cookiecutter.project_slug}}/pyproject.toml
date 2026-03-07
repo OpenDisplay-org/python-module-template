@@ -34,7 +34,9 @@ test = [
 ]
 dev = [
     "mypy>=1.19.1",
-    "ruff>=0.14.10"
+    "prek>=0.3.4",
+    "pylint>=4.0.5",
+    "ruff>=0.14.10",
 ]
 
 [project.urls]

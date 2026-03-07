@@ -59,12 +59,23 @@ def init_git() -> None:
         print("⚠️  git not found — skipping repo initialisation.")
 
 
+def install_prek() -> None:
+    try:
+        subprocess.run(["uv", "sync", "--all-extras"], check=True, capture_output=True)
+        subprocess.run(["uv", "run", "prek", "install"], check=True, capture_output=True)
+        print("✅ prek hook installed.")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️  Could not install prek hook: {e}")
+    except FileNotFoundError:
+        print("⚠️  uv not found — skipping prek install.")
+
+
 init_git()
+install_prek()
 
 print("✅ Project generated successfully!")
 print(f"📁 Project: {os.getcwd()}")
 print(f"📄 License: {{cookiecutter.license}}")
 print("\n📝 Next steps:")
 print("  1. cd {{cookiecutter.project_slug}}")
-print("  2. uv sync --all-extras")
-print("  3. Start coding!")
+print("  2. Start coding!")
